@@ -2,8 +2,9 @@
 ===================
 
 
-## Dependencies and Setup
-### import pandas as pd
+# Dependencies and Setup
+
+import pandas as pd
 from pathlib import Path
 
 ----------
@@ -311,29 +312,29 @@ spending_summary["% Overall Passing"] = overall_passing_spending
 spending_summary = spending_summary[["Average Math Score","Average Reading Score",
                                     "% Passing Math","% Passing Reading","% Overall Passing"]]
 
-#Display results
+#### Display results
 spending_summary
 
-#Establish the bins.
+#### Establish the bins.
 size_bins = [0, 1000, 2000, 5000]
 labels = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
 
-#Categorize the spending based on the bins
+#### Categorize the spending based on the bins
 #Use `pd.cut` on the "Total Students" column of the `per_school_summary` DataFrame.
 pd.cut(per_school_summary["Total Students"], size_bins, labels=labels)
 
 per_school_summary["School Size"] = pd.cut(per_school_summary["Total Students"], size_bins, labels=labels)
 per_school_summary
 
-#Calculate averages for the desired columns. 
+#### Calculate averages for the desired columns. 
 size_math_scores = per_school_summary.groupby(["School Size"])["Average Math Score"].mean()
 size_reading_scores = per_school_summary.groupby(["School Size"])["Average Reading Score"].mean()
 size_passing_math = per_school_summary.groupby(["School Size"])["% Passing Math"].mean()
 size_passing_reading = per_school_summary.groupby(["School Size"])["% Passing Reading"].mean()
 size_overall_passing = per_school_summary.groupby(["School Size"])["% Overall Passing"].mean()
 
-# Create a DataFrame called `size_summary` that breaks down school performance based on school size (small, medium, or large).
-#Use the scores above to create a new DataFrame called `size_summary`
+### Create a DataFrame called `size_summary` that breaks down school performance based on school size (small, medium, or large).
+#### Use the scores above to create a new DataFrame called `size_summary`
 size_summary = pd.DataFrame(per_school_summary.groupby("School Size")["Total Students"].count())
 
 size_summary["Average Math Score"] = size_math_scores
