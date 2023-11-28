@@ -1,7 +1,10 @@
 # pandas-challenge : SCHOOL DATA ANALYSIS
 ===================
 
+#### In this assignment, an analysis is conducted of Standardized tests and other test scores to aggregate data and find trends of over 35k students across 15 schools for strategic planning of budgeting decisions made by the school boards. I find trends and patterns in students performances in literacy and math, sorted by school budget, with findings showing relationships between school size, school type, budgets, per student budget, and their performance. 
 
+
+### Pseudocode breakdown: 
 # Dependencies and Setup
 
 import pandas as pd
